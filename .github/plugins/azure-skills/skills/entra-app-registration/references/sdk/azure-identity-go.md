@@ -1,29 +1,30 @@
-# Authentication — Java Library Quick Reference
+# Authentication — Go Library Quick Reference
 
-> Condensed from **azure-identity-java**. Full patterns (workload identity,
+> Condensed from **azure-identity-go**. Full patterns (workload identity,
 > certificate auth, device code, sovereign clouds)
-> in the **azure-identity-java** plugin skill if installed.
+> in the **azure-identity-go** plugin skill if installed.
 
 ## Install
 
-```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-identity</artifactId>
-    <version><!-- https://central.sonatype.com/artifact/com.azure/azure-identity --></version>
-</dependency>
+```bash
+go get -u github.com/Azure/azure-sdk-for-go/sdk/azidentity
 ```
 
 ## Quickstart
 
 > **Auth:** `DefaultAzureCredential` is best for prototyping or local development. See [auth-best-practices.md](../auth-best-practices.md) for production patterns.
 
-```java
-import com.azure.identity.DefaultAzureCredential;
-import com.azure.identity.DefaultAzureCredentialBuilder;
+```go
+import (
+    "log"
 
-DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
-    .build();
+    "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+)
+
+cred, err := azidentity.NewDefaultAzureCredential(nil)
+if err != nil {
+    log.Fatal(err)
+}
 ```
 
 ## Best Practices
